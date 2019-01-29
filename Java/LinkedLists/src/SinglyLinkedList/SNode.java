@@ -8,9 +8,7 @@ public class SNode {
 
 	private SNode next;
 	
-	public SNode() {
-		this.data = 0;
-	}
+	public SNode() {}
 	
 	public SNode(int data) {
 		this.data = data;
