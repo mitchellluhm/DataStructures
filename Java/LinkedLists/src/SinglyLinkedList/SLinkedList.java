@@ -11,5 +11,9 @@ public class SLinkedList {
 	public SLinkedList(int data) {
 		this.head = new SNode(data);
 	}
+	
+	public SLinkedList(SNode node) {
+		this.head = node;
+	}
 
 }
