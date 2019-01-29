@@ -39,5 +39,7 @@ public interface SinglyLinkedList {
 	 * @param node
 	 * @return
 	 */
-	boolean append(SNode node);
+	void append(SNode node);
+	
+	void append(int data);
 }
