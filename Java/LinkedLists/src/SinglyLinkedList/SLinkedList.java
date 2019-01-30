@@ -4,14 +4,23 @@ public class SLinkedList implements SinglyLinkedList {
 	
 	public SNode head;
 	
+	public SNode tail;
+	
+	private int size;
+	
 	public SLinkedList() {}
 	
 	public SLinkedList(int data) {
-		this.head = new SNode(data);
+		SNode node = new SNode(data);
+		this.head = node;
+		this.tail = node;
+		this.size = 1;
 	}
 	
 	public SLinkedList(SNode node) {
 		this.head = node;
+		this.tail = node;
+		this.size = 1;
 	}
 
 	@Override
@@ -25,6 +34,10 @@ public class SLinkedList implements SinglyLinkedList {
 			temp = temp.getNext();
 		}
 		
+	}
+	
+	public int getSize() {
+		return this.size;
 	}
 
 	@Override
@@ -45,8 +58,9 @@ public class SLinkedList implements SinglyLinkedList {
 		SNode temp = this.head;
 		
 		if (pos == 0) {
+			// removing first node
 			this.head = temp.getNext();
-			
+			this.size--;
 			return true;
 		}
 
@@ -54,9 +68,19 @@ public class SLinkedList implements SinglyLinkedList {
 		
 		while (temp != null) {
 			if (i == pos - 1) {
-				SNode removed_next = temp.getNext().getNext();
-				temp.setNext(removed_next);
+				// temp is right before to be removed node
 
+				if (pos == this.getSize() - 1) {
+					// update tail
+					this.tail = temp;
+					temp.setNext(null);
+				} else {
+					// do not update tail
+					SNode removed_next = temp.getNext().getNext();
+					temp.setNext(removed_next);
+				}
+
+				this.size--;
 				return true;
 			}
 			i++;
@@ -81,7 +105,12 @@ public class SLinkedList implements SinglyLinkedList {
 		
 		while (temp != null) {
 			if (i == pos - 1) {
-				node.setNext(temp.getNext().getNext());
+				
+				if (pos == this.getSize() - 1) {
+					this.tail = node;
+				} else {
+					node.setNext(temp.getNext().getNext());
+				}
 				temp.setNext(node);
 
 				return true;
@@ -101,6 +130,8 @@ public class SLinkedList implements SinglyLinkedList {
 		}
 		
 		temp.setNext(node);
+		this.tail = node;
+		this.size++;
 	}
 	
 	public void append(int data) {
