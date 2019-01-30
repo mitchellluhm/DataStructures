@@ -123,15 +123,8 @@ public class SLinkedList implements SinglyLinkedList {
 
 	@Override
 	public void append(SNode node) {
-		SNode temp = this.head;
-		
-		while (temp.getNext() != null) {
-			temp = temp.getNext();
-		}
-		
-		temp.setNext(node);
+		this.tail.setNext(node);
 		this.tail = node;
-		this.size++;
 	}
 	
 	public void append(int data) {
