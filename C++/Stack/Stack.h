@@ -10,6 +10,13 @@
 
 // Creating a class STACK
 class stack {
+	// Creating a NODE Structure
+	struct node
+	{
+	    int data;
+	    struct node *next;
+	};
+
     struct node *top;
     public:
     stack() // constructor
