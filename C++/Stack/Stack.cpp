@@ -3,15 +3,18 @@
 
 using namespace std;
 
-
-
-
 // PUSH Operation
 void stack::push(int value) {
     struct node *ptr;
     ptr = new node;
     ptr->data = value;
     ptr->next = NULL;
+
+    /*
+    StackNode *n;
+    n->data = value;
+    n->below = NULL;
+    */
     if (top != NULL)
         ptr->next = top;
     top = ptr;
@@ -26,9 +29,10 @@ int stack::pop()
         return -1;
     } else {
 		temp = top;
+		int v = temp->data;
 		top = top->next;
 		delete temp;
-		return temp->data;
+		return v;
     }
 }
 
@@ -48,10 +52,11 @@ void stack::show()
 // Main function
 int main()
 {
+	cout << "MAIN STARTING" << endl;
     stack s;
     s.push(1);
-    s.push(1);
-    s.pop();
+    s.push(2);
+    s.push(3);
     s.show();
 
     return 0;

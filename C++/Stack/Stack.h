@@ -8,6 +8,8 @@
 #ifndef STACK_H_
 #define STACK_H_
 
+#include "StackNode.h"
+
 // Creating a class STACK
 class stack {
 	// Creating a NODE Structure
@@ -18,10 +20,14 @@ class stack {
 	};
 
     struct node *top;
+
+    StackNode *top_node;
+
     public:
     stack() // constructor
     {
         top = NULL;
+        top_node = NULL;
     }
     void push(int value); // to insert an element
     int pop();  // to delete an element
