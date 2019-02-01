@@ -1,26 +1,25 @@
 /*
  * Stack.h
  *
- *  Created on: Jan 30, 2019
+ *  Created on: Feb 1, 2019
  *      Author: mitchell
  */
 
 #ifndef STACK_H_
 #define STACK_H_
 
-#include "StackNode.h"
-
-class Stack {
-private:
-	int size;
-	StackNode top;
-public:
-	Stack();
-	int push(int d);
-	int pop();
-	int getSize();
+// Creating a class STACK
+class stack {
+    struct node *top;
+    public:
+    stack() // constructor
+    {
+        top = NULL;
+    }
+    void push(int value); // to insert an element
+    int pop();  // to delete an element
+    void show(); // to show the stack
 };
-
 
 
 
