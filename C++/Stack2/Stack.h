@@ -8,7 +8,6 @@
 #ifndef STACK_H_
 #define STACK_H_
 
-#include <iostream>
 #include "StackNode.h"
 
 // Creating a class STACK

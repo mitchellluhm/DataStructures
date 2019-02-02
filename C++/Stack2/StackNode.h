@@ -12,7 +12,6 @@ class StackNode {
 public:
 	int data;
 	StackNode *below;
-	StackNode(int d);
 };
 
 

@@ -40,13 +40,13 @@ int stack::pop()
 void stack::show()
 {
     struct node *ptr1 = top;
-    cout << "\nThe stack is\n";
-    while(ptr1 != NULL)
+    cout<<"\nThe stack is\n";
+    while(ptr1!=NULL)
     {
-        cout << ptr1->data << " -> ";
-        ptr1 = ptr1->next;
+        cout<<ptr1->data<<" -> ";
+        ptr1=ptr1->next;
     }
-    cout << "NULL\n";
+    cout<<"NULL\n";
 }
 
 // Main function
