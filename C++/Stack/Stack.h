@@ -13,6 +13,7 @@
 
 // Creating a class STACK
 class stack {
+    /*
 	// Creating a NODE Structure
 	struct node
 	{
@@ -21,13 +22,14 @@ class stack {
 	};
 
     struct node *top;
+    */
 
     StackNode *top_node;
 
     public:
     stack() // constructor
     {
-        top = NULL;
+        // top = NULL;
         top_node = NULL;
     }
     void push(int value); // to insert an element

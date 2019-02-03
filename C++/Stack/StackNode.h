@@ -9,11 +9,22 @@
 #define STACKNODE_H_
 
 class StackNode {
+private:
+    int data;
+    StackNode *below;
 public:
-	int data;
-	StackNode *below;
-	StackNode(void);
-	StackNode(int d);
+    
+    /* Constructors */
+    StackNode(void);
+    StackNode(int d);
+
+    /* Getters */
+    int getData(void);
+    StackNode *getBelow(void);
+
+    /* Setters */
+    void setData(int d);
+    void setBelow(StackNode *n);
 };
 
 

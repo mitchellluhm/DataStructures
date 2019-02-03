@@ -8,12 +8,13 @@ void stack::push(int value) {
     
     StackNode *n;
     n = new StackNode(); // reserve place on heap
-    n->data = value;
-    n->below = NULL;
+    n->setData(value);
+    n->setBelow(NULL);
     
     if (top_node != NULL) {
-	n->below = top_node;
+	n->setBelow(top_node);
     }
+
     top_node = n;
 }
 
@@ -22,12 +23,12 @@ int stack::pop()
 {
     StackNode *t;
     if(top_node == NULL) {
-        cout<<"\nThe stack is empty.";
+        cout << "\nThe stack is empty.";
         return -1;
     } else {
 		t = top_node;
-		int v = t->data;
-		top_node = top_node->below;
+		int v = t->getData();
+		top_node = top_node->getBelow();
 		delete t;
 		return v;
     }
@@ -40,8 +41,8 @@ void stack::show()
     cout << "\nThe stack is\n";
     while(t != NULL)
     {
-        cout << t->data << " -> ";
-        t = t->below;
+        cout << t->getData() << " -> ";
+        t = t->getBelow();
     }
     cout << "NULL\n";
 }
