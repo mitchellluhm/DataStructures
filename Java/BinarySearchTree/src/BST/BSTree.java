@@ -1,14 +1,10 @@
 package BST;
 
-public class BSTree implements BinarySearchTree {
+public class BSTree<T> {
 	
-	private TreeNode head;
+	private TreeNode<T> head;
 	
-	BSTree(int value) {
-		this.head = new TreeNode(value);
-	}
-	
-	BSTree(TreeNode node) {
+	BSTree(TreeNode<T> node) {
 		this.head = node;
 	}
 	
@@ -16,56 +12,84 @@ public class BSTree implements BinarySearchTree {
 		this.head = null;
 	}
 	
-	public TreeNode getHead() {
+	public TreeNode<T> getHead() {
 		return this.head;
 	}
 	
-	@Override
-	public int Search(int element) {
+	public TreeNode<T> Search(TreeNode<T> element) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
-	
-	public void recInsert(TreeNode node, int element) {
+
+	public void recInsert(TreeNode<T> node, TreeNode<T> element) {
 		
 		if (node == null) {
-			node = new TreeNode(element);
+			node = element;
 		} else {
-			int v = node.getValue();
+			Object v = node.getValue();
+			Object e = element.getValue();
 			System.out.println(v + " : v");
+			System.out.println(v.getClass().getName().equals("java.lang.Integer"));
 			
-			if (element <= v) {
+			if (v.getClass().getName().equals("java.lang.Integer")) {
+				if (Compare((int) v, (int) e)) {
+					// go right
+					if (node.getRight() == null) {
+						node.setRight(element);
+					} else {
+						recInsert(node.getRight(), element);
+					}
+				} else {
+					if (node.getLeft() == null) {
+						node.setLeft(element);
+					} else {
+						recInsert(node.getLeft(), element);
+					}
+				}
+			}
+			
+			/*
+			if (e <= v) {
 				// explore left side
 				recInsert(node.getLeft(), element);
 			} else {
 				// explore right side
 				recInsert(node.getRight(), element);
 			}
+			*/
 		}
 	}
 
-	@Override
-	public void Insert(int element) {
-		
+	private boolean Compare(int v, int e) {
+		if (e <= v) {
+			// explore left side
+			System.out.println("going left compare");
+			return false;
+		} else {
+			System.out.println("going right compare");
+			return true;
+		}
+	}
+
+	public void Insert(TreeNode<T> element) {
 		if (this.head == null) {
-			this.head = new TreeNode(element);
+			this.head = element;
 		} else {
 			recInsert(this.head, element);
 		}
-
+		
 	}
 
-	@Override
-	public boolean Remove(int element) {
+	public boolean Remove(TreeNode<T> element) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 	public static void main(String[] args) {
-		BSTree t = new BSTree(5);
-		t.Insert(2);
+		BSTree<Integer> t = new BSTree<Integer>(new TreeNode<Integer>(5));
+		t.Insert(new TreeNode<Integer>(2));
 		
-		System.out.println(t.getHead().getLeft());
+		System.out.println(t.getHead().getLeft().getValue());
 		
 	}
 

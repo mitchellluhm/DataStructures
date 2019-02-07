@@ -1,38 +1,38 @@
 package BST;
 
-public class TreeNode {
+public class TreeNode<U> {
 	
-	private int value;
-	private TreeNode left;
-	private TreeNode right;
+	private U value;
+	private TreeNode<U> left;
+	private TreeNode<U> right;
 	
-	TreeNode(int value) {
-		this.setValue(value);
+	TreeNode(U value) {
+		this.value = value;
 		this.setLeft(null);
 		this.setRight(null);
 	}
 
-	public int getValue() {
+	public U getValue() {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(U value) {
 		this.value = value;
 	}
 
-	public TreeNode getLeft() {
+	public TreeNode<U> getLeft() {
 		return left;
 	}
 
-	public void setLeft(TreeNode left) {
+	public void setLeft(TreeNode<U> left) {
 		this.left = left;
 	}
 
-	public TreeNode getRight() {
+	public TreeNode<U> getRight() {
 		return right;
 	}
 
-	public void setRight(TreeNode right) {
+	public void setRight(TreeNode<U> right) {
 		this.right = right;
 	}
 
