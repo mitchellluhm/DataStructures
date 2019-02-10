@@ -16,9 +16,28 @@ public class BSTree<T> {
 		return this.head;
 	}
 	
-	public TreeNode<T> Search(TreeNode<T> element) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean Search(TreeNode<T> element) {
+		Object e = element.getValue();
+		
+		if (this.head == null) {
+			return false;
+		} else {
+			return (recSearch(e, this.head.getLeft()) ||
+					recSearch(e, this.head.getRight()));
+		}
+	}
+
+	private boolean recSearch(Object e, TreeNode<T> node) {
+		if (node != null) {
+			if (node.getValue().equals(e)) {
+				return true;
+			} else {
+				return (recSearch(e, node.getLeft()) ||
+						recSearch(e, node.getRight()));
+			}
+		} else {
+			return false;
+		}
 	}
 
 	public void recInsert(TreeNode<T> node, TreeNode<T> element) {
@@ -88,6 +107,7 @@ public class BSTree<T> {
 	public static void main(String[] args) {
 		BSTree<Integer> t = new BSTree<Integer>(new TreeNode<Integer>(5));
 		t.Insert(new TreeNode<Integer>(2));
+		System.out.println(t.Search(new TreeNode<Integer>(2)));
 		
 		System.out.println(t.getHead().getLeft().getValue());
 		
